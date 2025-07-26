@@ -1,0 +1,321 @@
+/* --- Global Styles --- */
+:root {
+    /* Color Palette (Professional/Modern) */
+    --primary-blue: #0056b3; /* A deep, professional blue for main actions/branding */
+    --primary-blue-dark: #003d80; /* Darker shade for hover/active */
+    --secondary-green: #28a745; /* A standard success green */
+    --secondary-green-dark: #218838; /* Darker success green */
+    --accent-red: #dc3545; /* A muted red for warnings/logout */
+    --accent-red-dark: #c82333; /* Darker red */
+    --text-dark: #343a40; /* Dark charcoal for main text */
+    --text-medium: #6c757d; /* Medium gray for labels/secondary text */
+    --text-light: #f8f9fa; /* Off-white for light backgrounds */
+    --bg-light: #f8f9fa; /* Very light gray/off-white for body background */
+    --bg-card: #ffffff; /* Pure white for cards/forms */
+    --border-light: #dee2e6; /* Light gray for borders */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    --shadow-medium: rgba(0, 0, 0, 0.15); /* More prominent shadow */
+
+    /* Navigation Bar Specific Colors (Dark Charcoal & Subtle Gray) */
+    --nav-bg: #343a40; /* Dark Charcoal for navigation */
+    --nav-link: #f8f9fa; /* Off-white for links */
+    --nav-link-hover: #adb5bd; /* Lighter gray on hover */
+    --nav-text-muted: #ced4da; /* Slightly muted for welcome text */
+    --nav-logout-bg: #e74c3c; /* Red for logout */
+    --nav-logout-bg-dark: #c0392b; /* Darker red on hover */
+}
+
+/* Basic Resets and Font */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* Modern, clean font stack */
+    background-color: var(--bg-light); /* Very light gray */
+    color: var(--text-dark); /* Dark charcoal text */
+    line-height: 1.6;
+    font-size: 16px; /* Base font size */
+}
+
+/* Container for main content areas */
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+}
+
+/* --- Navigation Bar --- */
+nav {
+    background-color: var(--nav-bg); /* Use the new nav background variable */
+    color: var(--nav-link); /* Use the new nav link variable (off-white) */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: var(--nav-link); /* Use the new nav link variable */
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: 600; /* Slightly bolder */
+    transition: color 0.2s ease-in-out;
+}
+
+nav a:hover {
+    color: var(--nav-link-hover); /* Use the new nav link hover variable */
+}
+
+nav span {
+    margin-right: 15px;
+    font-size: 0.9em;
+    color: var(--nav-text-muted); /* Use the new muted text variable */
+}
+
+nav button {
+    background-color: var(--nav-logout-bg); /* Use the new logout background variable */
+    color: var(--text-light);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px; /* Slightly less rounded */
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+nav button:hover {
+    background-color: var(--nav-logout-bg-dark); /* Use the new logout hover variable */
+    transform: translateY(-1px); /* Subtle lift on hover */
+}
+nav button:active {
+    transform: translateY(0);
+}
+
+/* --- Main Content Area Styling --- */
+.main-content-area {
+    flex-grow: 1;
+    padding: 40px; /* More padding for spacious feel */
+    max-width: 960px; /* Slightly wider content area */
+    margin: 40px auto; /* Center with more margin */
+    background-color: var(--bg-card); /* Pure white background */
+    border-radius: 8px;
+    box-shadow: 0 6px 15px var(--shadow-light); /* Softer, larger shadow */
+}
+
+h1, h2, h3 {
+    color: var(--primary-blue); /* Headings in primary blue */
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.4em; }
+
+/* Form Styling */
+form {
+    background-color: var(--bg-card);
+    padding: 35px; /* Keep this padding, it's good */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    max-width: 480px; /* <-- CHANGED THIS LINE (was 480px) */
+    margin: 30px auto;
+    /*border: 1px solid var(--border-light);*/
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-medium); /* Muted gray for labels */
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select,
+form input[type="date"] {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: var(--text-dark);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+form input:focus,
+form select:focus {
+    border-color: var(--primary-blue); /* Primary blue highlight on focus */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.25); /* Subtle focus ring */
+}
+
+form button[type="submit"] {
+    background-color: var(--primary-blue); /* Primary blue for submit buttons */
+    color: var(--text-light);
+    border: none;
+    padding: 14px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.05em;
+    font-weight: 700; /* Bolder text */
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+form button[type="submit"]:hover {
+    background-color: var(--primary-blue-dark);
+    transform: translateY(-1px);
+}
+form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* --- Dashboard Specific Styles --- */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mark-attendance-section {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border: 1px solid var(--border-light);
+}
+
+.student-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.student-list li {
+    background-color: #f2f5f7; /* Very light blue-gray for list items */
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e9ecef; /* Slightly darker border */
+}
+
+.student-list select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-card);
+    color: var(--text-dark);
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.student-list select:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.25);
+}
+
+.dashboard-container button {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    margin-top: 20px;
+}
+
+.dashboard-container button:hover {
+    background-color: var(--primary-blue-dark);
+    transform: translateY(-1px);
+}
+.dashboard-container button:active {
+    transform: translateY(0);
+}
+
+
+/* --- Table Styles (for attendance history) --- */
+.attendance-table {
+    width: 100%;
+    border-collapse: separate; /* Use separate to allow border-radius */
+    border-spacing: 0; /* Remove default cell spacing */
+    margin-top: 25px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners apply to content */
+    border: 1px solid var(--border-light); /* Overall table border */
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 15px 20px; /* More padding */
+    text-align: left;
+    border-bottom: 1px solid var(--border-light); /* Only bottom border */
+}
+
+.attendance-table th {
+    background-color: #e9ecef; /* Lighter gray for table headers */
+    color: var(--primary-blue); /* Primary blue for headers */
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+}
+
+/* Apply border-top to first th for top-border effect */
+.attendance-table th:first-child { border-top-left-radius: 8px; }
+.attendance-table th:last-child { border-top-right-radius: 8px; }
+
+/* Remove last row's bottom border for cleaner look */
+.attendance-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.attendance-table tr:nth-child(even) {
+    background-color: #fcfdfe; /* Very subtle zebra striping */
+}
+
+.attendance-table tr:hover {
+    background-color: #f0f8ff; /* Light blue on hover for clarity */
+}
+
+/* --- Messages (Error/Success) --- */
+.error-message, p[style*="color: red"] {
+    color: var(--accent-red);
+    background-color: #ffebeb; /* Lighter red background */
+    border: 1px solid #f5c6cb;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.success-message, p[style*="color: green"] {
+    color: var(--secondary-green);
+    background-color: #e6ffed; /* Lighter green background */
+    border: 1px solid #bce2be;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
