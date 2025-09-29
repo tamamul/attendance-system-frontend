@@ -27,7 +27,7 @@ jobs:
 
       # 4. Build React (CRA atau Vite, sama aja `npm run build`)
       - name: Build React app
-        run: npm run build
+        run: CI=false npm run build
 
       # 5. Install Capacitor CLI
       - name: Install Capacitor
