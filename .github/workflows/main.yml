@@ -1,0 +1,60 @@
+name: Build React + Capacitor APK
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout kode
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Setup Node.js buat React
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3. Install dependencies React
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Build React (CRA atau Vite, sama aja `npm run build`)
+      - name: Build React app
+        run: npm run build
+
+      # 5. Install Capacitor CLI
+      - name: Install Capacitor
+        run: npm install @capacitor/cli @capacitor/core
+
+      # 6. Sync ke Android project
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      # 7. Setup Java & Android SDK
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      # 8. Build APK
+      - name: Build APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+
+      # 9. Upload artifact (APK hasil build)
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
